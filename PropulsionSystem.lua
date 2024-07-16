@@ -131,5 +131,50 @@ elseif SN3Ignition.Value == false then
 			end
 		end
 	end
-	
+end)
+local SN4Ignition = script.Parent.SN4Ignition
+local sn4active = false
+local SN5Ignition = script.Parent.SN5Ignition
+local sn5active = false
+local SN6Ignition = script.Parent.SN6Ignition
+local sn6active = false
+
+
+SN4Ignition:GetPropertyChangedSignal("Value"):Connect(function()
+	if SN4Ignition.Value == true then
+		--propulsion on
+		for _,engine in pairs(script.Parent:GetChildren()) do
+			if engine.Name == ("Raptor Engine") then
+				if engine:FindFirstChild("SerialNumber").Value == 4 then
+					for _,thrust in pairs(engine:GetChildren()) do
+						if thrust.Name == ("Thrust") then
+							thrust.Sound:Play()
+							thrust.Light.Enabled = true
+							thrust.Afterburner.Enabled = true
+							game:GetService("RunService").Heartbeat:Connect(function()
+								thrust.VectorForce.Force = Vector3.new(0,-vacuum_thrust,0)
+							end)
+							thrust.VectorForce.Enabled = true
+						end
+					end
+				end
+			end
+		end
+	elseif SN4Ignition.Value == false then
+		--propulsion off
+		for _,engine in pairs(script.Parent:GetChildren()) do
+			if engine.Name == ("Raptor Engine") then
+				if engine:FindFirstChild("SerialNumber").Value == 4 then
+					for _,thrust in pairs(engine:GetChildren()) do
+						if thrust.Name == ("Thrust") then
+							thrust.Sound:Stop()
+							thrust.Light.Enabled = false
+							thrust.Afterburner.Enabled = false
+							thrust.VectorForce.Enabled = false
+						end
+					end
+				end
+			end
+		end
+	end
 end)
