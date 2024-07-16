@@ -35,3 +35,41 @@ SN1Ignition:GetPropertyChangedSignal("Value"):Connect(function()
 			end
 		end
 	end
+	elseif SN1Ignition.Value == false then
+			--propulsion off
+			for _,engine in pairs(script.Parent:GetChildren()) do
+				if engine.Name == ("Raptor Engine") then
+					if engine:FindFirstChild("SerialNumber").Value == 1 then
+						for _,thrust in pairs(engine:GetChildren()) do
+							if thrust.Name == ("Thrust") then
+								thrust.Sound:Stop()
+								thrust.Light.Enabled = false
+								thrust.Afterburner.Enabled = false
+								thrust.VectorForce.Enabled = false
+						end
+						end
+					end
+				end
+			end
+	end
+end)
+SN2Ignition:GetPropertyChangedSignal("Value"):Connect(function()
+	if SN2Ignition.Value == true then
+		--propulsion on
+		for _,engine in pairs(script.Parent:GetChildren()) do
+			if engine.Name == ("Raptor Engine") then
+				if engine:FindFirstChild("SerialNumber").Value == 2 then
+					for _,thrust in pairs(engine:GetChildren()) do
+						if thrust.Name == ("Thrust") then
+							thrust.Sound:Play()
+							thrust.Light.Enabled = true
+							thrust.Afterburner.Enabled = true
+							game:GetService("RunService").Heartbeat:Connect(function()
+								thrust.VectorForce.Force = Vector3.new(0,-neutral_thrust,0)
+							end)
+							thrust.VectorForce.Enabled = true
+						end
+					end
+				end
+			end
+		end
