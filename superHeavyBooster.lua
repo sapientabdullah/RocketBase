@@ -1,21 +1,48 @@
-local neutral_thrust = 0
+local configuration = {
+	LegExplosionVelocity = 300; 
+	BodyExplosionVelocity = 25; 
+}
 
-game:GetService("RunService").Heartbeat:Connect(function()
-	neutral_thrust = script.Parent["Neutral Thrust"].Value
-	for _,x in pairs(script.Parent["Thrust Ram"]:GetDescendants()) do 
-		if x:IsA("VectorForce") then 
-			x.Force = Vector3.new(0,neutral_thrust,0)
-			x.Attachment0 = x.Parent
-		end 
+
+
+local Body = script.Parent:FindFirstChild("ShipBody") 
+
+local Weld = Instance.new("WeldConstraint")
+
+for _,part in pairs(script.Parent:GetChildren()) do
+	if part:IsA("BasePart") and part.Name ~= ("ShipBody") then
+		local weld = Weld:Clone()
+		weld.Parent = part
+		weld.Part0 = part
+		weld.Part1 = Body
+		wait()	
+		part.Anchored = false
+	elseif part:IsA("BasePart") and part.Name == ("ShipBody") then
+		part.Anchored = true
 	end
-end)
+end
 
-script.Parent.Ignition:GetPropertyChangedSignal("Value"):Connect(function()
-	if script.Parent.Ignition.Value == true then
-		for _,x in pairs(script.Parent["Thrust Ram"]:GetDescendants()) do 
-			if x:IsA("PointLight") or x:IsA("ParticleEmitter") or x:IsA("VectorForce") then 
-				x.Enabled = true
-			elseif x:IsA("Sound") then
-				x:Play()
-			end 
+local exploded = false
+
+local function explode()
+	if exploded == false then
+		exploded = true
+		Body.Explosion:Play()
+		Body.ExplodeParticle.Enabled = true
+		for _,rocketpart in pairs(Body.Parent:GetDescendants()) do
+			if rocketpart:IsA("BasePart") then
+				rocketpart.Material = Enum.Material.CorrodedMetal
+				rocketpart.CanCollide = false
+			end
 		end
+		for _,scriptx in pairs(script.Parent:GetDescendants()) do
+			if scriptx:IsA("Script") then
+				scriptx:Destroy()
+			end
+		end
+		Body:BreakJoints()
+		delay(0.75, function()
+			Body:Destroy()
+		end)
+	end	
+end
