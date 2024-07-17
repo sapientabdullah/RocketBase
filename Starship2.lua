@@ -51,3 +51,32 @@ end
 
 
 shared.ExplodeCheck = game:GetService("RunService").Stepped:Connect(function()
+  	if exploded == false then
+			local cx,cy,cz = math.floor(Body.Velocity.X),math.floor(Body.Velocity.Y),math.floor(Body.Velocity.Z)
+			local current_velocity = Vector3.new(cx,cy,cz)
+			--leg portion
+			for _,leg in pairs(script.Parent:GetDescendants()) do
+				if leg.Name == ("Landing Leg") then
+					leg.Touched:Connect(function(Obj)
+						if Obj.Size.X > Body.Size.Y or Obj.Size.Y > Body.Size.Y or Obj.Size.Z > Body.Size.Y and Obj.Name ~= "Ray" and Obj.Name ~= "Mars" then
+							if cx >= configuration["LegExplosionVelocity"] or cy >= configuration["LegExplosionVelocity"] or cz >= configuration["LegExplosionVelocity"] then
+								explode()
+							end
+						end
+					end)
+				end
+			end
+			--body portion
+			for _,body in pairs(script.Parent:GetDescendants()) do
+				if body.Name == ("ShipBody") then
+					body.Touched:Connect(function(Obj)
+						if Obj.Size.X > Body.Size.Y or Obj.Size.Y > Body.Size.Y or Obj.Size.Z > Body.Size.Y and Obj.Name ~= "Ray" and Obj.Name ~= "Mars" then
+							if cx >= configuration["BodyExplosionVelocity"] or cy >= configuration["BodyExplosionVelocity"] or cz >= configuration["BodyExplosionVelocity"] then
+								explode()
+							end
+						end
+					end)
+				end
+			end
+	end
+end)
