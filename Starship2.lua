@@ -28,3 +28,26 @@ local exploded = false
 --Explosion Phys
 
 local VectorForce = Instance.new("VectorForce")
+
+local VectorForce = Instance.new("VectorForce")
+
+local function explode()
+	if exploded == false then
+		exploded = true
+		Body.Explosion:Play()
+		Body.ExplodeParticle.Enabled = true
+		script.Parent.SN1Ignition.Value = false
+		script.Parent.SN2Ignition.Value = false
+		script.Parent.SN3Ignition.Value = false
+		for _,rocketpart in pairs(Body.Parent:GetChildren()) do
+			if rocketpart:IsA("BasePart") then
+				rocketpart.Material = Enum.Material.CorrodedMetal
+			end
+			Body.Parent:BreakJoints()
+		end
+		
+	end	
+end
+
+
+shared.ExplodeCheck = game:GetService("RunService").Stepped:Connect(function()
