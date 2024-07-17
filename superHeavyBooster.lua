@@ -3,8 +3,6 @@ local configuration = {
 	BodyExplosionVelocity = 25; 
 }
 
-
-
 local Body = script.Parent:FindFirstChild("ShipBody") 
 
 local Weld = Instance.new("WeldConstraint")
@@ -46,3 +44,22 @@ local function explode()
 		end)
 	end	
 end
+
+shared.ExplodeCheck = game:GetService("RunService").Stepped:Connect(function()
+	if exploded == false then
+			local cx,cy,cz = math.floor(Body.Velocity.X),math.floor(Body.Velocity.Y),math.floor(Body.Velocity.Z)
+			local current_velocity = Vector3.new(cx,cy,cz)
+			--body portion
+			for _,body in pairs(script.Parent:GetDescendants()) do
+				if body.Name == ("ShipBody") then
+					body.Touched:Connect(function(Obj)
+						if Obj.Size.X > Body.Size.Y or Obj.Size.Y > Body.Size.Y or Obj.Size.Z > Body.Size.Y and Obj.Name ~= "Ray" and Obj.Name ~= "Mars" then
+							if cx >= configuration["BodyExplosionVelocity"] or cy >= configuration["BodyExplosionVelocity"] or cz >= configuration["BodyExplosionVelocity"] then
+								explode()
+							end
+						end
+					end)
+				end
+			end
+	end
+end)
