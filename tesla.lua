@@ -79,3 +79,37 @@ game:GetService("RunService").Heartbeat:Connect(function()
 	elseif CurrentRoad == nil then
 	end
 end)
+local function RoadTrace(Road)
+	if not Road:FindFirstChild("MiddleLine") then
+		local MiddleLine = Instance.new("Part", Road)
+		MiddleLine.Name = "MiddleLine"
+		MiddleLine.Anchored = true
+		MiddleLine.Material = Enum.Material.Neon
+		MiddleLine.CanCollide = false
+		MiddleLine.Transparency = 1
+		MiddleLine.Color = Color3.fromRGB(255, 255, 0)
+		MiddleLine.CFrame = Road.CFrame + Vector3.new(0,Road.Size.Y,0)
+		MiddleLine.Size = Vector3.new(0.1,Road.Size.Y,Road.Size.Z)
+	end
+	if not Road:FindFirstChild("LeftLine") then
+		local LeftLine = Instance.new("Part", Road)
+		LeftLine.Name = "LeftLine"
+		LeftLine.Anchored = true
+		LeftLine.Material = Enum.Material.Neon
+		LeftLine.CanCollide = false
+		LeftLine.Transparency = 1
+		LeftLine.Color = Color3.fromRGB(255, 255, 0)
+		LeftLine.CFrame = Road.CFrame + Vector3.new(-Road.Size.X/2,Road.Size.Y,0)
+		LeftLine.Size = Vector3.new(0.1,Road.Size.Y,Road.Size.Z)
+	end
+	if not Road:FindFirstChild("RightLine") then
+		local RightLine = Instance.new("Part", Road)
+		RightLine.Name = "RightLine"
+		RightLine.Anchored = true
+		RightLine.Material = Enum.Material.Neon
+		RightLine.CanCollide = false
+		RightLine.Transparency = 1
+		RightLine.Color = Color3.fromRGB(255, 255, 0)
+		RightLine.CFrame = Road.CFrame + Vector3.new(-Road.Size.X/2,Road.Size.Y,0)
+		RightLine.Size = Vector3.new(0.1,Road.Size.Y,Road.Size.Z)
+	end
