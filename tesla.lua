@@ -113,3 +113,26 @@ local function RoadTrace(Road)
 		RightLine.CFrame = Road.CFrame + Vector3.new(-Road.Size.X/2,Road.Size.Y,0)
 		RightLine.Size = Vector3.new(0.1,Road.Size.Y,Road.Size.Z)
 	end
+	Road.TouchEnded:Connect(function(object)
+		if object.Parent.Name == "CurrentSensor" then
+			if Road:FindFirstChild("LeftLine") then
+				Road.LeftLine:Destroy()
+			end
+			if Road:FindFirstChild("RightLine") then
+				Road.RightLine:Destroy()
+			end
+			CurrentRoad = nil
+		end
+	end)
+end
+
+game:GetService("RunService").Heartbeat:Connect(function()
+	if CurrentRoad ~= nil then
+		GotRoad = true
+	elseif CurrentRoad == nil then
+		GotRoad = false
+	end
+	if GotRoad == true then
+		RoadTrace(CurrentRoad)
+	end
+end)
