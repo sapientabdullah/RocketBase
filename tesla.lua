@@ -49,3 +49,33 @@ game:GetService("RunService").Heartbeat:Connect(function()
 				end
 			end)
 		end
+		if MainSensor:FindFirstChild("SensorRay") then
+			MainSensor.SensorRay.Touched:Connect(function(object)
+				if object.Name == "Road" then
+					local magnitude = (script.Parent.Body.Weight.Position - object.Position).Magnitude
+					if magnitude < script.Parent.Body.Weight.AssemblyLinearVelocity.X + script.Parent.Body.Weight.AssemblyLinearVelocity.Z then
+						local steermagnitude = (object.Orientation.Y - CurrentCapturedOrientation)
+						if steermagnitude > EngageABS or steermagnitude < -EngageABS then
+							if slowingdown == false then
+								speedingup = false
+								slowingdown = true
+								slowdown()
+							end
+						elseif steermagnitude < EngageABS or steermagnitude > -EngageABS then
+							if speedingup == false then
+								slowingdown = false
+								speedingup = true
+								speedup()
+							end
+						end
+					end
+				end
+			end)
+		end
+		
+	end
+	if CurrentRoad ~= nil then
+		SteerAngle.TargetAngle = CurrentRoad.Orientation.Y - CurrentCapturedOrientation
+	elseif CurrentRoad == nil then
+	end
+end)
