@@ -67,3 +67,52 @@ game:GetService("RunService").Heartbeat:Connect(function()
 											aroundblocked = false
 											aroundpathfinding = true
 										end)
+																		elseif rightmaintouching == false and leftmaintouching == true and gatheredinfo == false then
+										gatheredinfo = true
+										SteerAngle.TargetAngle = -30
+										leftmaintouching = false
+										delay(2, function()
+											aroundblocked = false
+											aroundpathfinding = true
+										end)
+									elseif rightmaintouching == true and leftmaintouching == true and gatheredinfo == false then
+										gatheredinfo = true
+										aroundblocked = true
+										local random = math.random(1,2)
+										if random == 1 then
+											SteerAngle.TargetAngle = 30
+										elseif random == 2 then
+											SteerAngle.TargetAngle = -30
+										end
+										delay(2, function()
+											aroundblocked = false
+											aroundpathfinding = true
+										end)
+									elseif rightmaintouching == false and leftmaintouching == false and gatheredinfo == false then
+										gatheredinfo = true
+										if pickedrandom == false then
+											pickedrandom = true
+											local random = math.random(1,2)
+											aroundblocked = false
+											if random == 1 then
+												SteerAngle.TargetAngle = 30
+											elseif random == 2 then
+												SteerAngle.TargetAngle = -30
+											end
+										end
+										delay(2, function()
+											aroundblocked = false
+											aroundpathfinding = true
+										end)
+									end
+									wait(1)
+									if aroundblocked == false then
+										CurrentSpeed.Value = 7.5
+									elseif aroundblocked == true then
+										CurrentSpeed.Value = -7.5
+									end
+										shared.trackingloop:Disconnect()
+								end
+							end
+						end
+					end)
