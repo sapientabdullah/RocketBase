@@ -116,3 +116,40 @@ game:GetService("RunService").Heartbeat:Connect(function()
 							end
 						end
 					end)
+					MainSensor.SensorRay.TouchEnded:Connect(function()
+						delay(0.25, function()
+							aroundpathfinding = false
+							gatheredinfo = false
+							slowingdown = false
+							rightmaintouching = false
+							leftmaintouching = false
+						end)
+						
+						MainTracking = false
+						pickedrandom = false
+						CurrentSpeed.Value = 25
+						
+					end)
+				end
+			end)
+		end
+	end
+	if aroundpathfinding == true then
+		MainRightSensor.SensorRay.Touched:Connect(function(object)
+			if object.Name ~= "Terrain" then
+				rightmaintouching = true
+			end
+		end)
+		MainRightSensor.SensorRay.TouchEnded:Connect(function(object)
+			rightmaintouching = false
+		end)
+		MainLeftSensor.SensorRay.Touched:Connect(function(object)
+			if object.Name ~= "Terrain" then
+				leftmaintouching = true
+			end
+		end)
+		MainLeftSensor.SensorRay.TouchEnded:Connect(function(object)
+			leftmaintouching = false
+		end)
+	end
+end)
