@@ -28,3 +28,42 @@ game:GetService("RunService").Heartbeat:Connect(function()
 	elseif aroundpathfinding == false then
 		script.Parent.Autonomous.Disabled = false
 	end
+
+	if script.Parent.Power.Value == true then
+		if MainSensor:FindFirstChild("SensorRay") then
+			MainSensor.SensorRay.Touched:Connect(function(object)
+				if object.Name ~= "Terrain" and object.Name ~= "Road" then
+					MainTracking = true
+					shared.trackingloop = game:GetService("RunService").Heartbeat:Connect(function()
+						if MainTracking == true then
+							local Magnitude = (CurrentCapturedPosition - object.Position).Magnitude
+							if slowingdown == false then
+								slowingdown = true
+								for i = 1,math.floor(CurrentSpeed.Value) do
+									if CurrentSpeed.Value > 0 then
+										CurrentSpeed.Value -= 1
+									end
+									wait(0.02)
+								end
+							end
+							if CurrentSpeed.Value == 0 then
+								if aroundpathfinding == false then
+									aroundpathfinding = true
+									wait(4)
+									wait()
+									if rightmaintouching == true and leftmaintouching == false and gatheredinfo == false then
+										gatheredinfo = true
+										SteerAngle.TargetAngle = 30
+										rightmaintouching = false
+										delay(2, function()
+											aroundblocked = false
+											aroundpathfinding = true
+										end)
+									elseif rightmaintouching == false and leftmaintouching == true and gatheredinfo == false then
+										gatheredinfo = true
+										SteerAngle.TargetAngle = -30
+										leftmaintouching = false
+										delay(2, function()
+											aroundblocked = false
+											aroundpathfinding = true
+										end)
