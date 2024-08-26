@@ -1,23 +1,21 @@
 ### Journey to Mars
 
-**Description:** 
+**Play the Beta:**
+- [Try the Beta on Roblox](https://www.roblox.com/games/106202665315395/Journey-to-Mars)
+- [View Gameplay Footage](https://journeytomars.framer.website/#gameplay-footage)
 
-Embark on an epic journey from Earth to Mars in this immersive Roblox game. Explore SpaceX’s Boca Chica base, pilot iconic rockets like Starship and Falcon 9, and tackle the challenges of establishing a Mars colony. Experience realistic space travel and groundbreaking gameplay in this thrilling adventure crafted by Abdullah and Bilal. Join us as we redefine gaming with this space exploration odyssey!
+**Description:**
+
+*Journey to Mars* is an immersive Roblox game where you explore SpaceX’s Boca Chica base, pilot iconic rockets, and build a Mars colony. It combines realistic space travel with innovative gameplay.
 
 **Features:**
-- **Realistic Space Travel:** Pilot famous spacecraft and adhere to the laws of physics.
-- **SpaceX Base:** Explore the intricacies of the Boca Chica launch site.
-- **Mars Colonization:** Overcome challenges to build and sustain a base on the Red Planet.
-- **Innovative Gameplay:** Dive into an immersive experience that combines gaming and space exploration.
+- **Realistic Space Travel:** Pilot famous spacecraft and experience space physics.
+- **SpaceX Base:** Explore the Boca Chica launch site.
+- **Mars Colonization:** Build and sustain a base on Mars.
+- **Innovative Gameplay:** A unique blend of gaming and space exploration.
 
-**Current Status:** 
-- Development & Beta Testing: Actively working on refining gameplay and features.
+**Current Status:**
+- **Beta Testing:** Actively refining gameplay and features.
 
-**Get Involved:** 
-- **Play Beta:** Experience the game and provide feedback.
-- **Contact:** For collaboration or inquiries, reach out to sapientabdullah@gmail.com.
-
-**Repository Links:**
-- [Gameplay Footage](https://journeytomars.framer.website/#gameplay-footage)
-- [Try the Beta](https://www.roblox.com/games/106202665315395/Journey-to-Mars)
-
+**Contact:**
+- For feedback or collaboration, email sapientabdullah@gmail.com.
