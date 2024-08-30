@@ -1,5 +1,8 @@
 # Journey to Mars
 
+![Demo](https://cloud-bg6ctv0c1-hack-club-bot.vercel.app/0second_launch__1_.gif)
+
+
 ### Play the Beta:
 - [Try the Beta on Roblox](https://www.roblox.com/games/106202665315395/Journey-to-Mars)
 - [View Gameplay Footage](https://journeytomars.framer.website/#gameplay-footage)
