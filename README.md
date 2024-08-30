@@ -1,6 +1,6 @@
 # Journey to Mars
 
-![Demo](https://cloud-bg6ctv0c1-hack-club-bot.vercel.app/0second_launch__1_.gif)
+![Demo](https://cloud-lsnqp3ph1-hack-club-bot.vercel.app/0second_launch.gif)
 
 
 ### Play the Beta:
