@@ -21,6 +21,15 @@ In this immersive experience, you'll explore the Boca Chica launch site, pilot i
 - **Pilot Iconic Rockets**: Nearly Complete
 - **Colonize Mars**: Terrain finished; additional work in progress
 
+### How to Play on Roblox:
+
+1.	Create a Roblox Account:
+	- Go to Roblox, click “Sign Up,” and fill in the required information.
+2.	Download and Install Roblox:
+	-	After creating an account, download the Roblox app to your device.
+3.	Join the Game:
+	-	Search for “Journey to Mars” or click the link provided in this README, then click “Play” to start the game.
+
 ### Contact:
 For feedback, collaboration opportunities, or just to share your thoughts, reach out to me at [sapientabdullah@gmail.com](mailto:sapientabdullah@gmail.com).
 
