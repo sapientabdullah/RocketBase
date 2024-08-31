@@ -1,5 +1,5 @@
 # Journey to Mars
-
+![Collage](https://cloud-ceuyuxked-hack-club-bot.vercel.app/0collage1.png)
 ![Demo](https://cloud-lsnqp3ph1-hack-club-bot.vercel.app/0second_launch.gif)
 
 
